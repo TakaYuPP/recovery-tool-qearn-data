@@ -175,7 +175,7 @@ void writeNewState(const std::string& filename) {
     outfile.write(reinterpret_cast<const char*>(&_initialRoundInfo), sizeof(_initialRoundInfo));
     outfile.write(reinterpret_cast<const char*>(&_currentRoundInfo), sizeof(_currentRoundInfo));
     outfile.write(reinterpret_cast<const char*>(&_epochIndex), sizeof(_epochIndex));
-    outfile.write(reinterpret_cast<const char*>(&newLocker), sizeof(newLocker));
+    outfile.write(reinterpret_cast<const char*>(&locker), sizeof(locker));
     outfile.write(reinterpret_cast<const char*>(&earlyUnlocker), sizeof(earlyUnlocker));
     outfile.write(reinterpret_cast<const char*>(&fullyUnlocker), sizeof(fullyUnlocker));
     outfile.write(reinterpret_cast<const char*>(&_earlyUnlockedCnt), sizeof(_earlyUnlockedCnt));
@@ -255,6 +255,10 @@ int main() {
             tempEpochIndex.endIndex = endIndex - cur_cnt - cnt;
             _epochIndex.set(i, tempEpochIndex);
             cur_cnt += cnt;
+        }
+
+        for(uint32_t i = 0; i < newLockerCnt; i++){
+            locker.set(i, newLocker.get(i));
         }
 
         lockerFile.close();
