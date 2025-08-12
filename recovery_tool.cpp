@@ -257,8 +257,13 @@ int main() {
             cur_cnt += cnt;
         }
 
-        for(uint32_t i = 0; i < newLockerCnt; i++){
-            locker.set(i, newLocker.get(i));
+        for(uint32_t i = 0; i < QEARN_MAX_USERS; i++){
+            if(i < newLockerCnt){
+                locker.set(i, newLocker.get(i));
+            }
+            else{
+                locker.set(i, LockInfo{0, id::zero(), 0});
+            }
         }
 
         lockerFile.close();
