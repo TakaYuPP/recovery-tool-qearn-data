@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(MigrationTool VERSION 1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-SET(FILES ${CMAKE_SOURCE_DIR}/migration_tool.cpp
+SET(FILES ${CMAKE_SOURCE_DIR}/recovery_tool.cpp
 	      ${CMAKE_SOURCE_DIR}/keyUtils.cpp
 )
 SET(HEADER_FILES

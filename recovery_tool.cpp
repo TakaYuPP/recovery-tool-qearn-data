@@ -235,15 +235,12 @@ int main() {
 
             for(uint32_t j = startIndex; j < endIndex; j++)
             {
-                char idStr[128] = {0};
-                getIdentityFromPublicKey(locker.get(j).ID.m256i_u8, idStr, false);
                 if(locker.get(j)._lockedAmount == 0)
                 {
                     cnt++;
                     continue;
                 }
                 newLocker.set(newLockerCnt++, locker.get(j));
-                lockerFile << locker.get(j)._lockedAmount << "," << idStr << "," << i << std::endl;
                 if(i == 172)
                 {
                     totalLockedAmountInEpoch172 += locker.get(j)._lockedAmount;
@@ -260,6 +257,9 @@ int main() {
         for(uint32_t i = 0; i < QEARN_MAX_USERS; i++){
             if(i < newLockerCnt){
                 locker.set(i, newLocker.get(i));
+                char idStr[128] = {0};
+                getIdentityFromPublicKey(locker.get(i).ID.m256i_u8, idStr, false);
+                lockerFile << locker.get(i)._lockedAmount << "," << idStr << "," << locker.get(i)._lockedEpoch << std::endl;
             }
             else{
                 locker.set(i, LockInfo{0, id::zero(), 0});
