@@ -270,7 +270,7 @@ int main() {
         std::cout << "CSV lockerFile created successfully!" << std::endl;
 
         std::cout << "Total locked amount in epoch 172: " << totalLockedAmountInEpoch172 << std::endl;
-        if(_currentRoundInfo.get(172)._totalLockedAmount == 0)
+        if(_initialRoundInfo.get(172)._totalLockedAmount == 0 || _currentRoundInfo.get(172)._totalLockedAmount == 0)
         {
             RoundInfo tempRoundInfo;
             tempRoundInfo._totalLockedAmount = totalLockedAmountInEpoch172;
