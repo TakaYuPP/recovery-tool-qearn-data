@@ -12,4 +12,4 @@ Please make the build file using cmake(you need to install the cmake in your PC.
    - please complie with release mode. then `recovery-tool-qearn-data.exe` file would be created in release directory.
    - please paste the contract0009.174 file in the release directory.
    - run the `recovery-tool-qearn-data.exe` file.
-   - you need to check the changes(date, size) of contract0010.174 files.
+   - you need to check the changes(date, size) of contract0009.174 files.
